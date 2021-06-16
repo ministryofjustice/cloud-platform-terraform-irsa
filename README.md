@@ -8,11 +8,9 @@ This module is created for teams in order to connect AWS roles to our live clust
 module "irsa" {
   source = "github.com/ministryofjustice/cloud-platform-terraform-irsa?ref=0.0.1"
 
-  environment-name       = "example-env"
-  team_name              = "cloud-platform"
-  infrastructure-support = "example-team@digtal.justice.gov.uk"
-  application            = "exampleapp"
-  sqs_name               = "examplesqsname"
+  namespace        = "mogaal-test"
+  service_account  = "mogaal"
+  role_policy_arns = [aws_iam_policy.policy.arn]
 }
 
 ```
