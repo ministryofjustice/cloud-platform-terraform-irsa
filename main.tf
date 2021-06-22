@@ -19,3 +19,14 @@ module "iam_assumable_role" {
   role_policy_arns              = var.role_policy_arns
   oidc_fully_qualified_subjects = ["system:serviceaccount:${var.namespace}:${var.service_account}"]
 }
+
+resource "kubernetes_service_account" "generated_sa" {
+  metadata {
+    name      = local.identifier
+    namespace = var.namespace
+    annotations = {
+      "eks.amazonaws.com/role-arn" = module.iam_assumable_role.this_iam_role_arn
+    }
+  }
+  automount_service_account_token = true
+}
