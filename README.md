@@ -57,5 +57,6 @@ module "irsa" {
 | Name | Description |
 |------|-------------|
 | aws\_iam\_role\_name | IAM role name to assume by the SA using annotations |
+| service\_account\_name | Name of the service account created |
 
 <!--- END_TF_DOCS --->
