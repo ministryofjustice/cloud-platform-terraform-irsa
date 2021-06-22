@@ -27,6 +27,7 @@ module "irsa" {
 | Name | Version |
 |------|---------|
 | aws | n/a |
+| kubernetes | n/a |
 | random | n/a |
 
 ## Modules
@@ -40,6 +41,7 @@ module "irsa" {
 | Name |
 |------|
 | [aws_eks_cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/eks_cluster) |
+| [kubernetes_service_account](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service_account) |
 | [random_id](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) |
 
 ## Inputs
@@ -49,7 +51,6 @@ module "irsa" {
 | eks\_cluster | EKS cluster name (workspace) where the role is going to be linked | `string` | `"live"` | no |
 | namespace | namespace where the service account to be linked is located | `string` | n/a | yes |
 | role\_policy\_arns | List of ARNs of IAM policies to attach to IAM role | `list(string)` | n/a | yes |
-| service\_account | The service account name to be linked with the AWS role | `string` | n/a | yes |
 
 ## Outputs
 
