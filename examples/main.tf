@@ -22,6 +22,5 @@ module "irsa" {
   source = "../"
 
   namespace        = "mogaal-test"
-  service_account  = "mogaal"
   role_policy_arns = [aws_iam_policy.policy.arn]
 }
