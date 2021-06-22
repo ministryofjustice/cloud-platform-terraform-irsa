@@ -1,5 +1,5 @@
 data "aws_eks_cluster" "live" {
-  name = "live"
+  name = var.eks_cluster
 }
 
 resource "random_id" "id" {
