@@ -1,8 +1,3 @@
-variable "service_account" {
-  description = "The service account name to be linked with the AWS role"
-  type        = string
-}
-
 variable "eks_cluster" {
   description = "EKS cluster name (workspace) where the role is going to be linked"
   type        = string
