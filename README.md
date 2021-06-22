@@ -9,7 +9,6 @@ module "irsa" {
   source = "github.com/ministryofjustice/cloud-platform-terraform-irsa?ref=0.0.1"
 
   namespace        = "mogaal-test"
-  service_account  = "mogaal"
   role_policy_arns = [aws_iam_policy.policy.arn]
 }
 
