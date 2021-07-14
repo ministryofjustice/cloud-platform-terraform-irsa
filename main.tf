@@ -25,7 +25,7 @@ resource "kubernetes_service_account" "generated_sa" {
     name      = local.identifier
     namespace = var.namespace
     annotations = {
-      "eks.amazonaws.com/role-arn" = module.iam_assumable_role.this_iam_role_arn
+      "eks.amazonaws.com/role-arn" = module.iam_assumable_role.iam_role_arn
     }
   }
   automount_service_account_token = true
