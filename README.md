@@ -50,7 +50,7 @@ module "irsa" {
 | eks\_cluster | EKS cluster name (workspace) where the role is going to be linked | `string` | `"live"` | no |
 | namespace | namespace where the service account to be linked is located | `string` | n/a | yes |
 | role\_policy\_arns | List of ARNs of IAM policies to attach to IAM role | `list(string)` | n/a | yes |
-| service\_account | service accounts | `string` | n/a | yes |
+| service\_account | service accounts | `string` | `""` | no |
 
 ## Outputs
 
