@@ -13,3 +13,7 @@ variable "role_policy_arns" {
   description = "List of ARNs of IAM policies to attach to IAM role"
   type        = list(string)
 }
+variable "service_account" {
+  description = "service accounts"
+  type        = string
+}
