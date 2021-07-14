@@ -16,4 +16,5 @@ variable "role_policy_arns" {
 variable "service_account" {
   description = "service accounts"
   type        = string
+  default     = ""
 }
