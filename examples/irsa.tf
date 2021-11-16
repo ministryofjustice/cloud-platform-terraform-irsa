@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "policy" {
+data "aws_iam_policy_document" "document" {
   statement {
     actions = [
       "s3:*",
@@ -12,13 +12,25 @@ data "aws_iam_policy_document" "policy" {
 resource "aws_iam_policy" "policy" {
   name        = "simple-policy-for-testing-irsa"
   path        = "/cloud-platform/"
-  policy      = data.aws_iam_policy_document.policy.json
+  policy      = data.aws_iam_policy_document.document.json
   description = "Policy for testing cloud-platform-terraform-irsa"
 }
 
 module "irsa" {
   source = "../"
 
-  namespace        = "mogaal-test"
+  namespace        = "irsa-test"
   role_policy_arns = [aws_iam_policy.policy.arn]
 }
+
+resource "kubernetes_secret" "irsa" {
+  metadata {
+    name      = "irsa"
+    namespace = "irsa-test"
+  }
+  data = {
+    role           = module.irsa.aws_iam_role_name
+    serviceaccount = module.irsa.service_account_name.name
+  }
+}
+ 
