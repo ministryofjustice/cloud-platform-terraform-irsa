@@ -17,6 +17,8 @@ resource "aws_iam_policy" "policy" {
 }
 
 module "irsa" {
+  #always replace with latest version from Github
+  #   source = "github.com/ministryofjustice/cloud-platform-terraform-irsa?ref=1.0.2"
   source = "../"
 
   namespace        = "irsa-test"
