@@ -4,15 +4,7 @@ This module is created for teams in order to connect AWS roles to our live clust
 
 ## Usage
 
-```hcl
-module "irsa" {
-  source = "github.com/ministryofjustice/cloud-platform-terraform-irsa?ref=0.0.1"
-
-  namespace        = "mogaal-test"
-  role_policy_arns = [aws_iam_policy.policy.arn]
-}
-
-```
+See [examples](examples/) folder
 
 <!--- BEGIN_TF_DOCS --->
 ## Requirements
