@@ -32,7 +32,6 @@ See [examples](examples/) folder
 | Name |
 |------|
 | [aws_eks_cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/eks_cluster) |
-| [kubernetes_service_account](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service_account) |
 | [kubernetes_service_account](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service_account) |
 | [random_id](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) |
 
