@@ -20,13 +20,6 @@ module "iam_assumable_role" {
   oidc_fully_qualified_subjects = ["system:serviceaccount:${var.namespace}:${local.service_account}"]
 }
 
-data "kubernetes_service_account" "existing" {
-  metadata {
-    name = local.service_account
-    namespace = var.namespace
-  }
-}
-
 resource "kubernetes_service_account" "generated_sa" {
   metadata {
     name      = local.service_account
