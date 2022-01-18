@@ -49,6 +49,6 @@ See [examples](examples/) folder
 | Name | Description |
 |------|-------------|
 | aws\_iam\_role\_name | IAM role name to assume by the SA using annotations |
-| service\_account\_name | Name of the service account created |
+| service\_account\_name | Service account created |
 
 <!--- END_TF_DOCS --->

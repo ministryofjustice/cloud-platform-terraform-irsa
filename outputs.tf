@@ -4,6 +4,7 @@ output "aws_iam_role_name" {
 }
 
 output "service_account_name" {
-  description = "Name of the service account created"
+  # NB: This is not the name of the service account, but the entire object
+  description = "Service account created"
   value       = kubernetes_service_account.generated_sa.metadata[0]
 }
