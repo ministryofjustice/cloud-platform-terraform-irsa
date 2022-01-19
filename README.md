@@ -48,6 +48,7 @@ See [examples](examples/) folder
 
 | Name | Description |
 |------|-------------|
+| aws\_iam\_role\_arn | ARN of IAM role assumed by the service account |
 | aws\_iam\_role\_name | IAM role name to assume by the SA using annotations |
 | service\_account\_name | Name of the service account created |
 
