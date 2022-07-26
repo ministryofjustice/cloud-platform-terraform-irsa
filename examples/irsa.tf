@@ -35,4 +35,3 @@ resource "kubernetes_secret" "irsa" {
     serviceaccount = module.irsa.service_account_name.name
   }
 }
- 
