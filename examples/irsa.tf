@@ -21,6 +21,7 @@ module "irsa" {
   #   source = "github.com/ministryofjustice/cloud-platform-terraform-irsa?ref=1.0.2"
   source = "../"
 
+  eks_cluster_name =  var.eks_cluster_name
   namespace        = "irsa-test"
   role_policy_arns = [aws_iam_policy.policy.arn]
 }
