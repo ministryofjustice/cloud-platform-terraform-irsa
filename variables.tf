@@ -1,8 +1,3 @@
-variable "eks_cluster" {
-  description = "EKS cluster name (workspace) where the role is going to be linked"
-  type        = string
-  default     = "live"
-}
 
 variable "namespace" {
   description = "namespace where the service account to be linked is located"
@@ -18,4 +13,9 @@ variable "service_account" {
   description = "service accounts"
   type        = string
   default     = ""
+}
+
+variable "eks_cluster_name" {
+  description = "The name of the eks cluster to retrieve the OIDC information"
+  type        = string
 }
