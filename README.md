@@ -6,7 +6,7 @@ This module is created for teams in order to connect AWS roles to our live clust
 
 See [examples](examples/) folder
 
-<!--- BEGIN_TF_DOCS --->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -54,5 +54,4 @@ See [examples](examples/) folder
 | <a name="output_aws_iam_role_arn"></a> [aws\_iam\_role\_arn](#output\_aws\_iam\_role\_arn) | ARN of IAM role assumed by the service account |
 | <a name="output_aws_iam_role_name"></a> [aws\_iam\_role\_name](#output\_aws\_iam\_role\_name) | IAM role name to assume by the SA using annotations |
 | <a name="output_service_account_name"></a> [service\_account\_name](#output\_service\_account\_name) | Service account created |
-
-<!--- END_TF_DOCS --->
+<!-- END_TF_DOCS -->
