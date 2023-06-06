@@ -17,6 +17,12 @@ locals {
   }
 }
 
+###########################
+# Get account information #
+###########################
+data "aws_caller_identity" "current" {}
+data "aws_partition" "current" {}
+
 ###################
 # Get EKS cluster #
 ###################
@@ -47,7 +53,7 @@ module "iam_assumable_role" {
 
   oidc_providers = {
     (data.aws_eks_cluster.eks_cluster.name) : {
-      provider_arn               = "${replace(data.aws_eks_cluster.eks_cluster.identity[0].oidc[0].issuer, "https://", "")}"
+      provider_arn               = "arn:${data.aws_partition.current.partition}:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/${replace(data.aws_eks_cluster.eks_cluster.identity[0].oidc[0].issuer, "https://", "")}"
       namespace_service_accounts = ["${var.namespace}:${var.service_account_name}"]
     }
   }
