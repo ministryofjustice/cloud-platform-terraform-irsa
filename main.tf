@@ -35,16 +35,22 @@ resource "random_id" "id" {
 # Create assumable role #
 #########################
 module "iam_assumable_role" {
-  source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
   version = "5.20.0"
 
-  allow_self_assume_role        = false
-  create_role                   = true
-  max_session_duration          = 3600
-  oidc_fully_qualified_subjects = ["system:serviceaccount:${var.namespace}:${var.service_account_name}"]
-  provider_url                  = data.aws_eks_cluster.eks_cluster.identity[0].oidc[0].issuer
-  role_name                     = "${local.identifier}-${data.aws_eks_cluster.eks_cluster.name}"
-  role_policy_arns              = var.role_policy_arns
+  allow_self_assume_role     = false
+  assume_role_condition_test = "StringEquals"
+  create_role                = true
+  force_detach_policies      = true
+  role_name                  = "${local.identifier}-${data.aws_eks_cluster.eks_cluster.name}"
+  role_policy_arns           = var.role_policy_arns
+
+  oidc_providers = {
+    (data.aws_eks_cluster.eks_cluster.name) : {
+      provider_arn               = "${replace(data.aws_eks_cluster.eks_cluster.identity[0].oidc[0].issuer, "https://", "")}"
+      namespace_service_accounts = ["${var.namespace}:${var.service_account_name}"]
+    }
+  }
 
   tags = local.default_tags
 }
