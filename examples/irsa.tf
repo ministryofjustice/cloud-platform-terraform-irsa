@@ -21,18 +21,30 @@ module "irsa" {
   #   source = "github.com/ministryofjustice/cloud-platform-terraform-irsa?ref=1.0.6"
   source = "../"
 
-  eks_cluster_name =  var.eks_cluster_name
-  namespace        = "irsa-test"
-  role_policy_arns = [aws_iam_policy.policy.arn]
+  # EKS configuration
+  eks_cluster_name = var.eks_cluster_name
+
+  # IRSA configuration
+  service_account_name = "${var.team_name}-${var.environment}"
+  namespace            = var.namespace # this is also used as a tag
+  role_policy_arns     = [aws_iam_policy.policy.arn]
+
+  # Tags
+  business_unit          = var.business_unit
+  application            = var.application
+  is_production          = var.is_production
+  team_name              = var.team_name
+  environment_name       = var.environment
+  infrastructure_support = var.infrastructure_support
 }
 
 resource "kubernetes_secret" "irsa" {
   metadata {
-    name      = "irsa"
-    namespace = "irsa-test"
+    name      = "${var.team_name}-irsa"
+    namespace = var.namespace
   }
   data = {
-    role           = module.irsa.aws_iam_role_name
-    serviceaccount = module.irsa.service_account_name.name
+    role           = module.irsa.role_name
+    serviceaccount = module.irsa.service_account.name
   }
 }
