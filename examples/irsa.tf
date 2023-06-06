@@ -27,7 +27,9 @@ module "irsa" {
   # IRSA configuration
   service_account_name = "${var.team_name}-${var.environment}"
   namespace            = var.namespace # this is also used as a tag
-  role_policy_arns     = [aws_iam_policy.policy.arn]
+  role_policy_arns = {
+    s3 = aws_iam_policy.policy.arn
+  }
 
   # Tags
   business_unit          = var.business_unit

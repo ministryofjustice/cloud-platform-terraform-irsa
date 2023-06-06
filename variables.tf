@@ -8,7 +8,7 @@ variable "eks_cluster_name" {
 
 variable "role_policy_arns" {
   description = "List of ARNs of IAM policies to attach to IAM role"
-  type        = list(string)
+  type        = map(string)
 }
 
 variable "service_account_name" {
