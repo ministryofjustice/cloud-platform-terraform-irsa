@@ -12,7 +12,7 @@ locals {
 
 module "iam_assumable_role" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "5.13.0"
+  version                       = "5.20.0"
   create_role                   = true
   role_name                     = "${local.service_account}-${var.eks_cluster_name}"
   provider_url                  = data.aws_eks_cluster.eks_cluster.identity[0].oidc[0].issuer
