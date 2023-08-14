@@ -1,6 +1,6 @@
 # cloud-platform-terraform-irsa
 
-This module is created for teams in order to connect AWS roles to our live clusters using IRSA (IAM Roles for Service Accounts). 
+This module is created for teams in order to connect AWS roles to our live clusters using IRSA (IAM Roles for Service Accounts).
 
 ## Usage
 
