@@ -1,10 +1,36 @@
 # cloud-platform-terraform-irsa
 
-This module is created for teams in order to connect AWS roles to our live clusters using IRSA (IAM Roles for Service Accounts).
+[![Releases](https://img.shields.io/github/v/release/ministryofjustice/cloud-platform-terraform-irsa.svg)](https://github.com/ministryofjustice/cloud-platform-terraform-irsa/releases)
+
+This Terraform module will create an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) and connected [Kubernetes service account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) for use on the Cloud Platform. This is known as IRSA or [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
 
 ## Usage
 
-See [examples](examples/) folder
+```hcl
+module "irsa" {
+  source = "github.com/ministryofjustice/cloud-platform-terraform-irsa?ref=version" # use the latest release
+
+  # EKS configuration
+  eks_cluster_name = var.eks_cluster_name
+
+  # IRSA configuration
+  service_account_name = "${var.team_name}-${var.environment}"
+  role_policy_arns = {
+    s3 = aws_iam_policy.policy.arn
+  }
+
+  # Tags
+  business_unit          = var.business_unit
+  application            = var.application
+  is_production          = var.is_production
+  team_name              = var.team_name
+  namespace              = var.namespace # this is also used to attach your service account to your namespace
+  environment_name       = var.environment
+  infrastructure_support = var.infrastructure_support
+}
+```
+
+See the [examples/](examples/) folder for more information.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -63,3 +89,14 @@ See [examples](examples/) folder
 | <a name="output_role_name"></a> [role\_name](#output\_role\_name) | IAM role name to assume by the SA using annotations |
 | <a name="output_service_account"></a> [service\_account](#output\_service\_account) | Service account metadata |
 <!-- END_TF_DOCS -->
+
+## Tags
+
+Some of the inputs for this module are tags. All infrastructure resources must be tagged to meet the MOJ Technical Guidance on [Documenting owners of infrastructure](https://technical-guidance.service.justice.gov.uk/documentation/standards/documenting-infrastructure-owners.html).
+
+You should use your namespace variables to populate these. See the [Usage](#usage) section for more information.
+
+## Reading Material
+
+- [Cloud Platform user guide](https://user-guide.cloud-platform.service.justice.gov.uk/#cloud-platform-user-guide)
+- [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)
