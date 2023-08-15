@@ -7,7 +7,7 @@ variable "eks_cluster_name" {
 }
 
 variable "role_policy_arns" {
-  description = "List of ARNs of IAM policies to attach to IAM role"
+  description = "Map of ARNs of IAM policies to attach to IAM role"
   type        = map(string)
 }
 
