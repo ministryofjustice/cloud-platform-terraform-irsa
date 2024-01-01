@@ -42,7 +42,7 @@ resource "random_id" "id" {
 #########################
 module "iam_assumable_role" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  version = "5.20.0"
+  version = "5.33.0"
 
   allow_self_assume_role     = false
   assume_role_condition_test = "StringEquals"
