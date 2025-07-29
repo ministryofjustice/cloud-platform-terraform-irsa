@@ -54,7 +54,7 @@ See the [examples/](examples/) folder for more information.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_iam_assumable_role"></a> [iam\_assumable\_role](#module\_iam\_assumable\_role) | terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks | 5.20.0 |
+| <a name="module_iam_assumable_role"></a> [iam\_assumable\_role](#module\_iam\_assumable\_role) | terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks | 5.59.0 |
 
 ## Resources
 
